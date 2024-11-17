@@ -1,5 +1,5 @@
-/** @jsxImportSource @emotion/react */
 import Head from 'next/head';
+import type { CSSObject } from '@emotion/react';
 
 const Home = () => {
   return (
@@ -11,13 +11,13 @@ const Home = () => {
       </Head>
 
       <main css={styles.main}>
-        <h1 css={styles.title}>Cool Boilerplate ⭐️</h1>
+        <h1>Cool Boilerplate ⭐️</h1>
       </main>
     </div>
   );
 };
 
-const styles = {
+const styles: CSSObject = {
   container: {
     padding: '0 2rem',
   },

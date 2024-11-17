@@ -1,5 +1,6 @@
-/** @jsxImportSource @emotion/react */
 import Link from 'next/link';
+
+import type { CSSObject } from '@emotion/react';
 
 const FourOhFour = () => {
   return (
@@ -7,14 +8,14 @@ const FourOhFour = () => {
       <main css={styles.main}>
         <h1>404 - Page Not Found</h1>
         <Link href="/">
-          <a style={styles.link}>Go back home</a>
+          <a css={styles.link}>Go back home</a>
         </Link>
       </main>
     </div>
   );
 };
 
-const styles = {
+const styles: CSSObject = {
   container: {
     padding: '0 2rem',
   },
