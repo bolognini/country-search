@@ -16,6 +16,7 @@
     "@types/node": "^22.9.0",
     "@types/react": "^18.3.12",
     "countries-list": "^3.1.1",
+    "fuse.js": "^7.0.0",
     "next": "12.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",

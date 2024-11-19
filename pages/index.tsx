@@ -1,32 +1,32 @@
 import Head from 'next/head';
-import type { CSSObject } from '@emotion/react';
+import { CountrySearch } from '../components/CountrySearch';
 
 const Home = () => {
   return (
     <div data-testid="home" css={styles.container}>
       <Head>
-        <title>Cool Boilerplate</title>
-        <meta name="description" content="Cool Boilerplate" />
+        <title>Country Search</title>
+        <meta name="description" content="Country Search" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main css={styles.main}>
-        <h1>Cool Boilerplate ⭐️</h1>
+        <h1 style={{ marginBottom: 16 }}>Country Search</h1>
+        <CountrySearch />
       </main>
     </div>
   );
 };
 
-const styles: CSSObject = {
+const styles = {
   container: {
     padding: '0 2rem',
   },
   main: {
     minHeight: '100vh',
     padding: '4rem 0',
-    flex: 1,
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column' as const,
     justifyContent: 'center',
     alignItems: 'center',
   },
