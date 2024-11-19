@@ -11,7 +11,9 @@ const Home = () => {
       </Head>
 
       <main css={styles.main}>
-        <h1 style={{ marginBottom: 16 }}>Country Search</h1>
+        <h1 style={{ marginBottom: 16, color: 'var(--bold)' }}>
+          Country Search
+        </h1>
         <CountrySearch />
       </main>
     </div>
@@ -21,9 +23,10 @@ const Home = () => {
 const styles = {
   container: {
     padding: '0 2rem',
+    color: 'var(--text)',
   },
   main: {
-    minHeight: '100vh',
+    height: '100vh',
     padding: '4rem 0',
     display: 'flex',
     flexDirection: 'column' as const,

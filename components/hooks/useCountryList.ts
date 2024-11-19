@@ -1,22 +1,27 @@
 export const useCountryList = ({
-  countryList,
+  list,
   setValue,
   setAnimateArrow,
   setShouldOpen,
 }) => {
-  const navigateList = (event, index) => {
+  const saveSelectedCountry = (value) => {
+    localStorage.setItem('selectedCountry', value);
+  };
+
+  const navigateList = (event, index, countryName) => {
     if (event.key === 'ArrowDown') {
       event.preventDefault();
-      const nextCountry = (index + 1) % countryList.current.length;
-      countryList.current[nextCountry].focus();
+      const nextCountry = (index + 1) % list.current.length;
+      list.current[nextCountry].focus();
     } else if (event.key === 'ArrowUp') {
       event.preventDefault();
       const prevCountry =
-        (index - 1 + countryList.current.length) % countryList.current.length;
-      countryList.current[prevCountry].focus();
+        (index - 1 + list.current.length) % list.current.length;
+      list.current[prevCountry].focus();
     } else if (event.key === 'Enter') {
       event.preventDefault();
-      setValue(countryList.current[index].innerHTML);
+      setValue(countryName);
+      saveSelectedCountry(countryName);
       setAnimateArrow(false);
       setShouldOpen(false);
     }
@@ -24,5 +29,6 @@ export const useCountryList = ({
 
   return {
     navigateList,
+    saveSelectedCountry,
   };
 };

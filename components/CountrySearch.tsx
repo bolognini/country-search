@@ -1,11 +1,13 @@
 import Fuse from 'fuse.js';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { countries } from 'countries-list';
-import { CountryList } from './CountryList';
+import { CountryList } from './CountryList/CountryList';
+import { breakpoint } from '../styles/breakpoints.style';
 
 export const CountrySearch = () => {
   const [isListFocused, setIsListFocused] = useState(false);
   const [inputCountry, setInputCountry] = useState([]);
+  const [shouldShowOriginalList, setShouldShowOriginalList] = useState(false);
   const [value, setValue] = useState('');
 
   const [animateArrow, setAnimateArrow] = useState(false);
@@ -13,7 +15,14 @@ export const CountrySearch = () => {
   const fuse = new Fuse(countryList, {
     keys: ['name'],
     includeMatches: true,
+    threshold: 0.2,
   });
+
+  useEffect(() => {
+    if (localStorage.getItem('selectedCountry')) {
+      setValue(localStorage.getItem('selectedCountry'));
+    }
+  }, []);
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     e.preventDefault();
@@ -32,16 +41,16 @@ export const CountrySearch = () => {
       <input
         type="text"
         onChange={(e) => {
+          setShouldShowOriginalList(false);
           handleChange(e);
         }}
-        placeholder="Select your country"
+        placeholder="Start typing to search for a country"
         css={styles.input}
         value={value}
         onClick={() => {
+          setShouldShowOriginalList(true);
+          setInputCountry(countryList);
           setAnimateArrow(true);
-        }}
-        onBlur={() => {
-          setAnimateArrow(false);
         }}
       />
       <div css={styles.arrow(animateArrow)} />
@@ -50,6 +59,7 @@ export const CountrySearch = () => {
         setValue={setValue}
         isListFocused={isListFocused}
         setAnimateArrow={setAnimateArrow}
+        shouldShowOriginalList={shouldShowOriginalList}
       />
     </div>
   );
@@ -57,13 +67,17 @@ export const CountrySearch = () => {
 
 const styles = {
   input: {
-    width: 600,
+    width: 350,
     padding: '12px 8px',
     borderRadius: '6px',
     border: '1px solid #b8b8b8',
-    fontSize: 16,
+    fontSize: 14,
     '&::placeholder': {
       opacity: 0.3,
+    },
+    [breakpoint.medium]: {
+      width: 600,
+      fontSize: 16,
     },
   },
   arrow: (animateArrow: boolean) =>
@@ -75,7 +89,7 @@ const styles = {
       height: 0,
       borderLeft: '8px solid transparent',
       borderRight: '8px solid transparent',
-      borderTop: '8px solid black',
+      borderTop: '8px solid var(--bold)',
       transition: 'transform 200ms ease-in-out',
       transform: animateArrow && 'rotate(180deg)',
       cursor: 'pointer',
