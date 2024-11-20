@@ -3,6 +3,8 @@
 <p align="center"><img src="public/logo.png" alt="A silly logo" width="60"></p>
 <p align="center">&laquo;<b>A Country Search Selector</b>&raquo;</p>
 
+### Description
+
 This project was part of a Frontend test. The challenge consists in creating a an easy and intuitive component to select any country in the world inside a form. The component should be able to achieve a few requirements, such as: typing within the input should call a fuzzy-search in which highlight the matched terms; it should be scrollable and navigable; the result should be a floating component with the found list; etc.
 
 You can access the live application on the following link: https://country-search-hazel.vercel.app/
