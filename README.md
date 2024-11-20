@@ -37,6 +37,8 @@ The navigation with the arrow keys only works after the user first press the `Ta
 
 I tried to extract some logic from the component to custom hooks to better isolate the process of them and for a better readability. I did the same with the country list component, separating it into a filtered list with the result from the fuzzy-search with a highlighted text, and an original list for when the user just search for the country by scrolling it and not typing. I also did this because of the different data strucutre of both libraries.
 
+Upon selecting a country by either clicking on it on pressing Enter when navigating on it, it sotres a localStorage key, `selectedCountry`, to persist the selected value after a page refreshing.
+
 My plan was to also add unit tests, since the project already has the configuration for them, and better organize the styles, with CSS variables and reusable styles, but I spent more time on the component itself, so I decided that done is better than perfect. As future steps, I would focus on:
 
 - Adding tests. This is a regular requirement I have to do in my daily tasks, but for this project I focused in the main requirements asked

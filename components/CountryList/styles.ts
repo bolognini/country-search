@@ -2,13 +2,13 @@ import { breakpoint } from '../../styles/breakpoints.style';
 
 const styles = {
   container: {
-    maxHeight: 400,
+    maxHeight: 250,
     width: '100%',
-    overflow: 'scroll',
+    overflowY: 'scroll' as const,
     boxShadow: '0px 10px 20px 0px rgba(0, 0, 0, 0.10)',
     marginTop: 8,
     borderRadius: '6px',
-    padding: 40,
+    padding: 12,
     textAlign: 'center' as const,
     position: 'absolute' as const,
     background: 'white',
