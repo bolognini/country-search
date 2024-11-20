@@ -3,13 +3,15 @@ import { getCountryCode } from 'countries-list';
 import { useCountryList } from '../hooks/useCountryList';
 import styles from './styles';
 
+import type { ListItem } from './type';
+
 export const OriginalList = ({
   inputCountry,
   setShouldOpen,
   setAnimateArrow,
   setValue,
-}) => {
-  const originalList = useRef([]);
+}: ListItem) => {
+  const originalList = useRef<any>([]);
   const { navigateList, saveSelectedCountry } = useCountryList({
     list: originalList,
     setValue,
@@ -19,7 +21,7 @@ export const OriginalList = ({
 
   return (
     <>
-      {inputCountry.map((country, index) => {
+      {inputCountry.map((country: any, index) => {
         const countryName = country?.name;
         return (
           <li
@@ -33,6 +35,7 @@ export const OriginalList = ({
               setValue(country?.name);
               saveSelectedCountry(country?.name);
             }}
+            // @ts-ignore
             ref={(element) => (originalList.current[index] = element)}
             onKeyDown={(event) => navigateList(event, index, countryName)}
           >

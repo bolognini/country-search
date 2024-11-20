@@ -4,13 +4,15 @@ import { getCountryCode } from 'countries-list';
 import { useCountryList } from '../hooks/useCountryList';
 import styles from './styles';
 
+import type { FormatHighlightedMatches, ListItem } from './type';
+
 export const FilteredList = ({
   inputCountry,
   setShouldOpen,
   setAnimateArrow,
   setValue,
-}) => {
-  const filteredList = useRef([]);
+}: ListItem) => {
+  const filteredList = useRef<any>([]);
   const { navigateList, saveSelectedCountry } = useCountryList({
     list: filteredList,
     setValue,
@@ -18,7 +20,10 @@ export const FilteredList = ({
     setShouldOpen,
   });
 
-  const formatHighlightedMatches = ({ indices, originalValue }) => {
+  const formatHighlightedMatches = ({
+    indices,
+    originalValue,
+  }: FormatHighlightedMatches) => {
     const matchedCharacters = indices;
     if (!matchedCharacters) {
       return null;
@@ -26,7 +31,7 @@ export const FilteredList = ({
 
     const highlightedCharacters = matchedCharacters.reduce((acc, curr) => {
       return [...acc, originalValue.slice(curr[0], curr[1] + 1)];
-    }, []);
+    }, [] as string[]);
 
     const formattedContent = highlightedCharacters.reduce((acc, curr) => {
       return acc.replace(curr, `**${curr}**`);
@@ -37,7 +42,7 @@ export const FilteredList = ({
 
   return (
     <>
-      {inputCountry.map((country, index) => {
+      {inputCountry.map((country: any, index) => {
         const formattedContent = formatHighlightedMatches({
           indices: country?.matches?.[0]?.indices,
           originalValue: country?.matches?.[0]?.value,
