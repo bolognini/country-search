@@ -35,6 +35,7 @@ export const OriginalList = ({
               setValue(country?.name);
               saveSelectedCountry(country?.name);
             }}
+            // @ts-ignore
             ref={(element) => (originalList.current[index] = element)}
             onKeyDown={(event) => navigateList(event, index, countryName)}
           >
