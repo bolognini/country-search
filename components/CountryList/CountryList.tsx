@@ -3,15 +3,18 @@ import { FilteredList } from './FilteredList';
 import { OriginalList } from './OriginalList';
 import styles from './styles';
 
+import type { List } from './type';
+
 export const CountryList = ({
   inputCountry,
   setValue,
   isListFocused,
   setAnimateArrow,
   shouldShowOriginalList,
-}) => {
-  const [shouldOpen, setShouldOpen] = useState(false);
-  const countryList = useRef(null);
+  shouldOpen,
+  setShouldOpen,
+}: List) => {
+  const countryList = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     if (inputCountry.length > 0) {
@@ -20,7 +23,7 @@ export const CountryList = ({
     if (isListFocused) {
       countryList.current?.focus();
     }
-  }, [inputCountry, isListFocused]);
+  }, [inputCountry, isListFocused, setShouldOpen]);
 
   if (!shouldOpen) {
     return null;
