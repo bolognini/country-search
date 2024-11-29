@@ -5,7 +5,7 @@
 
 ### Description
 
-This project consists of a simple component that call a fuzzy search which highlights the matched terms typed in an input, and it's scrollable and navigable.
+This project consists of a simple component that calls a fuzzy search which highlights the matched terms typed in an input, and it's scrollable and navigable.
 
 You can access the live application at the following link: https://country-search-hazel.vercel.app/
 
